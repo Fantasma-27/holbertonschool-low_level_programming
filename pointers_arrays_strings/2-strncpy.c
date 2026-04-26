@@ -10,6 +10,7 @@
 char *_strncpy(char *dest, char *src, int n)
 {
 	int count_bytes;
+
 	count_bytes = 0;
 
 	while (count_bytes < n && src[count_bytes] != '\0')
@@ -25,4 +26,3 @@ char *_strncpy(char *dest, char *src, int n)
 	}
 
 	return (dest);
-}
