@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <string.h>
 #include "dog.h"
 
 /**
@@ -16,6 +15,27 @@ int _strlen(char *s)
 		len++;
 
 	return (len);
+}
+
+/**
+ * _strcpy - copies a string
+ * @dest: destination
+ * @src: source
+ *
+ * Return: pointer to destination
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i = 0;
+
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+
+	dest[i] = '\0';
+	return (dest);
 }
 
 /**
@@ -52,8 +72,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 
-	strcpy(dog->name, name);
+	_strcpy(dog->name, name);
 	dog->age = age;
-	strcpy(dog->owner, owner);
+	_strcpy(dog->owner, owner);
 	return (dog);
 }
