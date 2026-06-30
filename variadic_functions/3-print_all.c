@@ -1,5 +1,5 @@
 #include "variadic_functions.h"
-#include<stdio.h>
+#include <stdio.h>
 
 /**
  * print_char - prints a char
@@ -38,8 +38,7 @@ void print_string(va_list args)
 
 	if (str == NULL)
 		printf("(nil)");
-
-	else
+	if (str != NULL)
 		printf("%s", str);
 }
 
