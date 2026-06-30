@@ -1,4 +1,5 @@
 #include "variadic_functions.h"
+#include <stdarg.h>
 #include <stdio.h>
 
 /**
@@ -35,6 +36,7 @@ void print_float(va_list args)
 void print_string(va_list args)
 {
 	char *str = va_arg(args, char *);
+
 	(void)((str && printf("%s", str)) || printf("(nil)"));
 }
 
@@ -42,7 +44,7 @@ void print_string(va_list args)
  * print_all - prints anything
  * @format: format string
  */
-void print_all(const char *const format, ...)
+void print_all(const char * const format, ...)
 {
 	va_list args;
 	int i, j, first;
@@ -53,23 +55,18 @@ void print_all(const char *const format, ...)
 		{'s', print_string},
 		{'\0', NULL}
 	};
-	if (!format)
-	{
-		printf("\n");
-		return;
-	}
+
 	va_start(args, format);
 	i = 0;
 	first = 1;
-	while (format[i])
+	while (format && format[i])
 	{
 		j = 0;
 		while (ops[j].c != '\0')
 		{
 			if (format[i] == ops[j].c)
 			{
-				if (first == 0)
-					printf(", ");
+				(void)((first == 0) && printf(", "));
 				ops[j].f(args);
 				first = 0;
 				break;
