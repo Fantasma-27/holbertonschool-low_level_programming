@@ -56,7 +56,7 @@ void print_all(const char *const format, ...)
 	if (!format)
 	{
 		printf("\n");
-		return ();
+		return;
 	}
 	va_start(args, format);
 	i = 0;
