@@ -53,33 +53,31 @@ void print_all(const char *const format, ...)
 		{'s', print_string},
 		{'\0', NULL}
 	};
-
+	if (!format)
+	{
+		printf("\n");
+		return ();
+	}
 	va_start(args, format);
 	i = 0;
 	first = 1;
-
 	while (format[i])
 	{
 		j = 0;
-
 		while (ops[j].c != '\0')
 		{
 			if (format[i] == ops[j].c)
 			{
 				if (first == 0)
 					printf(", ");
-
 				ops[j].f(args);
 				first = 0;
 				break;
 			}
-
 			j++;
 		}
-
 		i++;
 	}
-
 	va_end(args);
 	printf("\n");
 }
